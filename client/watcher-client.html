@@ -1,0 +1,12 @@
+<html>
+    <head></head>
+    <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="./watcher-client.js"></script>
+    <body>
+        <div id="videoArea">
+            <video id="localVideo" autoplay muted playsinline style="width: 640px;height: 360px;border: 1px blue solid;margin-left: 5%;"></video>
+        </div>
+        <h1 id="statusText" style="color: red;">Wait for connection...</h1>
+    </body>
+</html>
