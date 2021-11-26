@@ -35,9 +35,9 @@ let localVideo = document.getElementById('localVideo');
 // hold many peerCons
 var pcConns = {};
 
-(function getUserMedia(){
-    try {
-        let stream = await navigator.mediaDevices.getUserMedia(mediaConstraints)
+(function (){
+    navigator.mediaDevices.getUserMedia(mediaConstraints)
+    .then(stream=>{
         let localVideo = document.getElementById("localVideo");
         localVideo.srcObject = stream ;
         localStream = stream ;
@@ -46,14 +46,12 @@ var pcConns = {};
         console.log('get the camera : ',videoTrack[0].label);
         console.log('get the microphone: ',audioTrack[0].label);;
         socket.emit("broadcaster",roomName);
-    } catch (error) {
-        console.log("error : ",error);
-    }
+    })
+    .catch(err=>{
+        console.log(err);
+    })
 })()
 
-// (function createRoom() {
-//     socket.emit("broadcaster",roomName);
-// })();
 
 socket.on('watcher',(clientSocketId)=>{
     createPeerConnection(clientSocketId);

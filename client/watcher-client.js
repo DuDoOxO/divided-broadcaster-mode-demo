@@ -22,7 +22,6 @@ var pcConfigration = {
 
 var pc ;
 var localStream;
-var localVideo = document.getElementById('localVideo');
 // just get in
 socket.on('connect',()=>{
     socket.emit("watcher",null,roomName);
@@ -69,6 +68,7 @@ socket.on("offer",(bdcasterSocketId,offer)=>{
     // get the broadcaster stream
     pc.ontrack = (event)=>{
         document.getElementById('statusText').innerText = "Get Connection";
+        let localVideo = document.getElementById('localVideo');
         localVideo.srcObject = event.streams[0];
         localStream = event.streams[0];
     };
